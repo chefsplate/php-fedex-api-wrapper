@@ -36,7 +36,7 @@ class Request extends AbstractRequest
         if (null != $wsdlPath) {
             $this->_wsdlPath = $wsdlPath;
         } else {
-            $this->_wsdlPath = realpath(dirname(__FILE__) . '/../_wsdl/ShipService_v12.wsdl');
+            $this->_wsdlPath = realpath(dirname(__FILE__) . '/../_wsdl/ShipService_v17.wsdl');
         }
 
         $this->_soapClient = new \SoapClient($this->_wsdlPath, array('trace' => true));
@@ -60,7 +60,7 @@ class Request extends AbstractRequest
      */
     public function getCreatePendingShipmentReply(ComplexType\CreatePendingShipmentRequest $createPendingShipmentRequest)
     {
-        return $this->_soapClient->createPendingShipment($createPendingShipmentRequest->toArray());
+        return $this->_soapClient->processShipment($createPendingShipmentRequest->toArray());
     }
        /**
      * Sends the ProcessTagRequest and returns the response
